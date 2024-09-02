@@ -42,6 +42,10 @@ const targets /*: Array<Target> */ = [
         entry: './contrib/mhchem/mhchem.js',
     },
     {
+        name: "contrib/physics",
+        entry: "./contrib/physics/physics.js",
+    },
+    {
         name: 'contrib/copy-tex',
         entry: './contrib/copy-tex/copy-tex.js',
     },

@@ -16,6 +16,10 @@
       "require": "./dist/contrib/mhchem.js",
       "import": "./dist/contrib/mhchem.mjs"
     },
+    "./contrib/physics": {
+      "require": "./dist/contrib/physics.js",
+      "import": "./dist/contrib/physics.mjs"
+    },
     "./contrib/copy-tex": {
       "require": "./dist/contrib/copy-tex.js",
       "import": "./dist/contrib/copy-tex.mjs"
@@ -164,7 +168,8 @@
       "src/**/*.js",
       "contrib/**/*.js",
       "!src/unicodeSymbols.js",
-      "!contrib/mhchem/**"
+      "!contrib/mhchem/**",
+      "!contrib/physics/**"
     ],
     "setupFilesAfterEnv": [
       "<rootDir>/test/setup.js"
