@@ -3,32 +3,10 @@
  *  KaTeX physics.js
  *
  *  This file implements a KaTeX version of physics version 1.3.
- *  It is adapted from
+ *  This code is adapted from:
  *   - https://github.com/balthild/katex-physics
- *   - MathJax-third-party-extensions/legacy/physics/
- *     https://github.com/mathjax/MathJax-third-party-extensions/tree/master/legacy/physics
- *  It differs from the MathJax version as follows:
- *    1. The interface is changed so that it can be called from KaTeX, not MathJax.
- *    2. Added additional macros missing from the MathJax version as referenced from
- *       https://mirrors.ibiblio.org/CTAN/macros/latex/contrib/physics/physics.pdf
- *        - \trace
- *        - \Trace
- *        - \ip
- *        - Matrix macros
- *    3. Removed the following macros as they are already implemented in KaTeX:
- *       - \Im
- *       - \ket
- *       - \bra
- *       - \braket
- *
- *  Some features are not implemented yet:
- *   - `*` modified command
- *   - `[]` or `()` modified command
- *   - variable no. of arguments
- *
- *  Many features are still buggy, for example, Matrix macros.
- *  However, there is a working implementation here:
- *  https://github.com/balthild/katex-physics
+ *   - https://github.com/mathjax/MathJax-third-party-extensions/tree/master/legacy/physics
+ *   - https://github.com/mathjax/MathJax-src/tree/master
  *
  *  This code, as other KaTeX code, is released under the MIT license.
  *
@@ -65,24 +43,6 @@
 //
 // Automatic bracing
 //
-function getDelimSize(prefix) {
-    switch (prefix) {
-        case "\\big":
-            return "\\bigl";
-        case "\\Big":
-            return "\\Bigl";
-        case "\\bigg":
-            return "\\biggl";
-        case "\\Bigg":
-            return "\\Biggl";
-        default:
-            if (prefix.startsWith("\\")) {
-                throw new Error("Invalid size specifier: " + start);
-            }
-            return "";
-    }
-}
-
 katex.__defineMacro("\\quantity", function (ctx) {
     const prefix = ctx.popToken().text;
     const lBracesSize = getDelimSize(prefix);
@@ -93,7 +53,7 @@ katex.__defineMacro("\\quantity", function (ctx) {
         throw new Error("Expecting opening delimiters after the command");
     }
     const expr = [lBracesSize || "\\left", lBraces === "{" ? "\\{" : lBraces];
-    let opened = 0;
+    var opened = 0;
     while (true) {
         const next = ctx.popToken().text;
         if (next === "EOF") {
@@ -299,9 +259,7 @@ katex.__defineMacro("\\imaginary", "\\mathfrak{I}");
 // Quick quad text
 //
 katex.__defineMacro("\\qqtext", function (ctx) {
-    return (
-        (isAlt(ctx) ? "" : "\\quad") + "\\text{" + ctx.popToken() + "}\\quad"
-    );
+    return (isAlt(ctx) ? "" : "\\quad") + "\\text{" + popNextArg() + "}\\quad";
 });
 katex.__defineMacro("\\qq", "\\qqtext");
 katex.__defineMacro("\\qcomma", ",\\quad");
@@ -349,7 +307,7 @@ katex.__defineMacro("\\differential", function (ctx) {
         return op;
     }
     try {
-        const ch = ctx.popToken();
+        const ch = popNextArg(ctx);
         return "\\mathop{}\\!" + op + "{" + ch + "}";
     } catch (e) {
         return op;
@@ -358,47 +316,35 @@ katex.__defineMacro("\\differential", function (ctx) {
 katex.__defineMacro("\\dd", "\\differential");
 katex.__defineMacro("\\derivative", function (ctx) {
     const n = getSquareParameter(ctx);
-    const fn = ctx.popToken();
+    const fn = popNextArg(ctx);
     while (ctx.future().text === " ") {
         ctx.popToken();
     }
     if (ctx.future().text !== "{") {
-        return "\\frac{\\dd^{" + n + "}}{" + ddExpr(1, fn) + "^{" + n + "}}";
+        return "\\frac{\\dd^{" + n + "}}{" + dd(1, fn) + "^{" + n + "}}";
     }
     var variable;
     try {
-        variable = ctx.popToken();
+        variable = popNextArg(ctx);
     } catch (e) {}
-    return (
-        "\\frac{" + ddExpr(n, fn) + "}{" + ddExpr(1, variable) + "^{" + n + "}}"
-    );
+    return "\\frac{" + dd(n, fn) + "}{" + dd(1, variable) + "^{" + n + "}}";
 });
 katex.__defineMacro("\\dv", "\\derivative");
 katex.__defineMacro("\\partialderivative", function (ctx) {
     const n = getSquareParameter(ctx);
-    const fn = ctx.popToken();
+    const fn = popNextArg(ctx);
     if (n) {
         while (ctx.future().text === " ") {
             ctx.popToken();
         }
         if (ctx.future().text !== "{") {
-            return (
-                "\\frac{\\pd^{" + n + "}}{" + pdExpr(1, fn) + "^{" + n + "}}"
-            );
+            return "\\frac{\\pd^{" + n + "}}{" + pd(1, fn) + "^{" + n + "}}";
         }
         var variable;
         try {
-            variable = ctx.popToken();
+            variable = popNextArg(ctx);
         } catch (e) {}
-        return (
-            "\\frac{" +
-            pdExpr(n, fn) +
-            "}{" +
-            pdExpr(1, variable) +
-            "^{" +
-            n +
-            "}}"
-        );
+        return "\\frac{" + pd(n, fn) + "}{" + pd(1, variable) + "^{" + n + "}}";
     }
     const args = [];
     while (true) {
@@ -409,19 +355,19 @@ katex.__defineMacro("\\partialderivative", function (ctx) {
             break;
         }
         try {
-            args.push(ctx.popToken());
+            args.push(popNextArg(ctx));
         } catch (e) {
             break;
         }
     }
     if (args.length === 0) {
-        return "\\frac{\\partial}{" + pdExpr(args.length, fn) + "}";
+        return "\\frac{\\partial}{" + pd(args.length, fn) + "}";
     }
     return (
         "\\frac{" +
-        pdExpr(args.length, fn) +
+        pd(args.length, fn) +
         "}{" +
-        args.map((arg) => pdExpr(1, arg)).join("") +
+        args.map((arg) => pd(1, arg)).join("") +
         "}"
     );
 });
@@ -436,7 +382,7 @@ katex.__defineMacro("\\pd", function (ctx) {
         return op;
     }
     try {
-        const ch = ctx.popToken();
+        const ch = popNextArg(ctx);
         return "\\mathop{}\\!" + op + "{" + ch + "}";
     } catch (e) {
         return op;
@@ -568,7 +514,7 @@ katex.__defineMacro(
 );
 katex.__defineMacro("\\mdet", "\\matrixdeterminant");
 katex.__defineMacro("\\identitymatrix", function (ctx) {
-    const n = parseInt(ctx.popToken());
+    const n = parseInt(popNextArg(ctx));
     if (isNaN(n)) {
         throw new Error("Expecting integers as the parameter of \\imat");
     }
@@ -578,9 +524,9 @@ katex.__defineMacro("\\imat", "\\identitymatrix");
 katex.__defineMacro("\\xmatrix", function (ctx) {
     const lbl = isAlt(ctx);
     const [x, n, m] = [
-        ctx.popToken(),
-        parseInt(ctx.popToken()),
-        parseInt(ctx.popToken()),
+        popNextArg(ctx),
+        parseInt(popNextArg(ctx)),
+        parseInt(popNextArg(ctx)),
     ];
     if (isNaN(n) || isNaN(m)) {
         throw new Error(
@@ -620,19 +566,19 @@ katex.__defineMacro("\\paulimatrix", function (ctx) {
     var mat = "";
     switch (n) {
         case "0":
-            mat = " 1 & 0\\\\ 0 & 1";
+            mat = "1&0\\\\0&1";
             break;
         case "1":
         case "x":
-            mat = " 0 & 1\\\\ 1 & 0";
+            mat = "0&1\\\\1&0";
             break;
         case "2":
         case "y":
-            mat = " 0 & -i\\\\ i & 0";
+            mat = "0&-i\\\\i&0";
             break;
         case "3":
         case "z":
-            mat = " 1 & 0\\\\ 0 & -1";
+            mat = "1&0\\\\0&-1";
             break;
         default:
             throw new Error(
@@ -692,8 +638,8 @@ const bracesSize = {
 };
 
 const isDigit = /^\d+$/;
-const ddExpr = (n, f) => "\\dd[" + n + "]{" + f + "}";
-const pdExpr = (n, f) => "\\pd[" + n + "]{" + f + "}";
+const dd = (n, f) => "\\dd[" + n + "]{" + f + "}";
+const pd = (n, f) => "\\pd[" + n + "]{" + f + "}";
 
 function popNextArg(ctx) {
     return ctx
@@ -732,6 +678,24 @@ function isAlt(ctx) {
         return true;
     }
     return false;
+}
+
+function getDelimSize(prefix) {
+    switch (prefix) {
+        case "\\big":
+            return "\\bigl";
+        case "\\Big":
+            return "\\Bigl";
+        case "\\bigg":
+            return "\\biggl";
+        case "\\Bigg":
+            return "\\Biggl";
+        default:
+            if (prefix.startsWith("\\")) {
+                throw new Error("Invalid size specifier: " + start);
+            }
+            return "";
+    }
 }
 
 // Recursively expand nested matrices
