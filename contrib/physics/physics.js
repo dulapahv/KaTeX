@@ -3,23 +3,18 @@
  *  KaTeX physics.js
  *
  *  This file implements a KaTeX version of physics version 1.3.
- *  This code is adapted from:
+ *  https://ctan.org/pkg/physics
+ *
+ *  Some of the code is based on the following sources:
  *   - https://github.com/balthild/katex-physics
  *   - https://github.com/mathjax/MathJax-third-party-extensions/tree/master/legacy/physics
- *   - https://github.com/mathjax/MathJax-src/tree/master
+ *   - https://github.com/mathjax/MathJax-src
  *
  *  This code, as other KaTeX code, is released under the MIT license.
  *
- * /*************************************************************
- *
- *  MathJax-third-party-extensions/legacy/physics/
- *  https://github.com/mathjax/MathJax-third-party-extensions/tree/master/legacy/physics
- *
- *  Mimics the LaTeX Physics Package
- *
  *  ---------------------------------------------------------------------
  *
- *  Copyright (c) 2011-2015 The MathJax Consortium
+ *  Copyright (c) 2011-2024 The MathJax Consortium
  *  Copyright (c) 2024 Dulapah Vibulsanti
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -40,6 +35,7 @@
 /*************************************************************
  * Add macros to KaTeX
  */
+
 //
 // Automatic bracing
 //
@@ -52,26 +48,25 @@ katex.__defineMacro("\\quantity", function (ctx) {
     if (typeof rBraces === "undefined") {
         throw new Error("Expecting opening delimiters after the command");
     }
-    const expr = [lBracesSize || "\\left", lBraces === "{" ? "\\{" : lBraces];
+    const expr = [lBracesSize || "\\left"];
+    expr.push(lBraces === "{" ? "\\{" : lBraces);
     let opened = 0;
     while (true) {
         const next = ctx.popToken().text;
-        if (next === "EOF") {
+        if (next === "EOF")
             throw new Error(`Expecting closing delimiters ${rBraces}`);
-        } else if (next !== rBraces) {
+        else if (next !== rBraces) {
             expr.push(next);
-            if (next === lBraces) {
-                opened++;
-            }
+            if (next === lBraces) opened++;
         } else if (opened > 0) {
             expr.push(next);
             opened--;
         } else {
-            expr.push(rBracesSize || "\\right", rBraces === "}" ? "\\}" : next);
+            expr.push(rBracesSize || "\\right");
+            expr.push(rBraces === "}" ? "\\}" : next);
             break;
         }
     }
-
     return expr.join(" ");
 });
 katex.__defineMacro("\\qty", "\\quantity");
@@ -87,23 +82,20 @@ katex.__defineMacro("\\norm", function (ctx) {
     return isAlt(ctx) ? "\\|{#1}\\|" : "\\left\\Vert{#1}\\right\\Vert";
 });
 katex.__defineMacro("\\evaluated", function (ctx) {
-    const start = isAlt(ctx) ? ctx.popToken().text : ctx.popToken().text;
+    const alt = isAlt(ctx);
+    const start = ctx.popToken().text;
     const end = evalBraces[start];
-    if (typeof end === "undefined") {
+    if (typeof end === "undefined")
         throw new Error("Expecting opening delimiters after \\eval");
-    }
     const expr = ["\\left"];
     expr.push(start === "{" ? "." : start);
     let opened = 0;
     while (true) {
         const next = ctx.popToken().text;
-        if (next === "EOF") {
-            throw new Error(`Expecting ${end} after \\eval`);
-        } else if (next !== end) {
+        if (next === "EOF") throw new Error(`Expecting ${end} after \\eval`);
+        else if (next !== end) {
             expr.push(next);
-            if (next === start) {
-                opened++;
-            }
+            if (next === start) opened++;
         } else if (end === "}" && opened > 0) {
             expr.push(next);
             opened--;
@@ -282,12 +274,8 @@ qMacros.forEach(({name, text}) => {
 katex.__defineMacro("\\differential", function (ctx) {
     const n = getSquareParameter(ctx);
     let op = "\\mathrm{d}";
-    if ((n && !isDigit.test(n)) || n > 1) {
-        op += `^{${n}}`;
-    }
-    if (ctx.future().text !== "{") {
-        return op;
-    }
+    if ((n && !isDigit.test(n)) || n > 1) op += `^{${n}}`;
+    if (ctx.future().text !== "{") return op;
     try {
         const ch = popNextArg(ctx);
         return `\\mathop{}\\!${op}{${ch}}`;
@@ -300,9 +288,7 @@ katex.__defineMacro("\\derivative", function (ctx) {
     const alt = isAlt(ctx);
     const n = getSquareParameter(ctx);
     const fn = popNextArg(ctx);
-    while (ctx.future().text === " ") {
-        ctx.popToken();
-    }
+    while (ctx.future().text === " ") ctx.popToken();
     if (ctx.future().text !== "{") {
         return alt
             ? `\\dd^{${n}}/${dd(1, fn)}^{${n}}`
@@ -322,9 +308,7 @@ katex.__defineMacro("\\partialderivative", function (ctx) {
     const n = getSquareParameter(ctx);
     const fn = popNextArg(ctx);
     if (n) {
-        while (ctx.future().text === " ") {
-            ctx.popToken();
-        }
+        while (ctx.future().text === " ") ctx.popToken();
         if (ctx.future().text !== "{") {
             return alt
                 ? `\\pd^{${n}}/${pd(1, fn)}^{${n}}`
@@ -340,12 +324,8 @@ katex.__defineMacro("\\partialderivative", function (ctx) {
     }
     const args = [];
     while (true) {
-        while (ctx.future().text === " ") {
-            ctx.popToken();
-        }
-        if (ctx.future().text !== "{") {
-            break;
-        }
+        while (ctx.future().text === " ") ctx.popToken();
+        if (ctx.future().text !== "{") break;
         try {
             args.push(popNextArg(ctx));
         } catch (e) {
@@ -365,12 +345,8 @@ katex.__defineMacro("\\pdv", "\\partialderivative");
 katex.__defineMacro("\\pd", function (ctx) {
     const n = getSquareParameter(ctx);
     let op = "\\partial";
-    if ((n && !isDigit.test(n)) || n > 1) {
-        op += `^{${n}}`;
-    }
-    if (ctx.future().text !== "{") {
-        return op;
-    }
+    if ((n && !isDigit.test(n)) || n > 1) op += `^{${n}}`;
+    if (ctx.future().text !== "{") return op;
     try {
         const ch = popNextArg(ctx);
         return `\\mathop{}\\!${op}{${ch}}`;
@@ -383,12 +359,8 @@ katex.__defineMacro("\\var", "\\variation");
 katex.__defineMacro("\\fd", function (ctx) {
     const n = getSquareParameter(ctx);
     let op = "\\delta";
-    if ((n && !isDigit.test(n)) || n > 1) {
-        op += `^{${n}}`;
-    }
-    if (ctx.future().text !== "{") {
-        return op;
-    }
+    if ((n && !isDigit.test(n)) || n > 1) op += `^{${n}}`;
+    if (ctx.future().text !== "{") return op;
     try {
         const ch = popNextArg(ctx);
         return `\\mathop{}\\!${op}{${ch}}`;
@@ -400,9 +372,7 @@ katex.__defineMacro("\\functionalderivative", function (ctx) {
     const alt = isAlt(ctx);
     const n = getSquareParameter(ctx);
     const fn = popNextArg(ctx);
-    while (ctx.future().text === " ") {
-        ctx.popToken();
-    }
+    while (ctx.future().text === " ") ctx.popToken();
     if (ctx.future().text !== "{") {
         return alt
             ? `\\delta^{${n}}/${fdv(1, fn)}^{${n}}`
@@ -426,10 +396,9 @@ katex.__defineMacro("\\ket", function (ctx) {
 });
 katex.__defineMacro("\\bra", function (ctx) {
     let alt = isAlt(ctx);
-    const expr = [alt ? "\\langle" : "\\left<", "{" + popNextArg(ctx)];
-    while (ctx.future().text === " ") {
-        ctx.popToken();
-    }
+    const expr = [alt ? "\\langle" : "\\left<"];
+    expr.push(`{${popNextArg(ctx)}`);
+    while (ctx.future().text === " ") ctx.popToken();
     if (ctx.future().text !== "\\ket") {
         expr.push(`}${alt ? "|" : "\\right|"}`);
         return expr.join(" ");
@@ -479,29 +448,25 @@ katex.__defineMacro("\\expectationvalue", function (ctx) {
     const alt1 = isAlt(ctx);
     const alt2 = isAlt(ctx);
     const a = popNextArg(ctx);
-    while (ctx.future().text === " ") {
-        ctx.popToken();
-    }
-    if (ctx.future().text !== "{") {
-        return `\\left<{${a}}\\right>`;
-    }
+    while (ctx.future().text === " ") ctx.popToken();
+    if (ctx.future().text !== "{") return `\\left<{${a}}\\right>`;
     const b = popNextArg(ctx);
-    return alt1 && alt2
-        ? `\\left\\langle{${b}}\\middle\\vert{${a}}\\middle\\vert{${b}}\\right\\rangle`
-        : alt1
-          ? `\\langle{${b}}|{${a}}|{${b}}\\rangle`
-          : `\\left\\langle{${b}}\\right\\vert{\\!${a}\\!}\\left\\vert{${b}}\\right\\rangle`;
+    return genBracket(a, b, a, alt1, alt2);
 });
 katex.__defineMacro("\\expval", "\\expectationvalue");
 katex.__defineMacro("\\ev", "\\expectationvalue");
 katex.__defineMacro("\\matrixelement", function (ctx) {
-    const [a, b, c] = ctx.consumeArgs(3).map((arg) =>
-        arg
-            .reverse()
-            .map((t) => t.text)
-            .join(""),
-    );
-    return `\\left<{${a}}\\middle|{${b}}\\middle|{${c}}\\right>`;
+    const alt1 = isAlt(ctx);
+    const alt2 = isAlt(ctx);
+    const args = ctx.consumeArgs(3);
+    const result = [];
+    for (let i = 0; i < args.length; i++) {
+        let acc = "";
+        for (let j = args[i].length - 1; j >= 0; j--) acc += args[i][j].text;
+        result.push(acc);
+    }
+    const [a, b, c] = result;
+    return genBracket(a, b, c, alt1, alt2);
 });
 katex.__defineMacro("\\matrixel", "\\matrixelement");
 katex.__defineMacro("\\mel", "\\matrixelement");
@@ -510,39 +475,57 @@ katex.__defineMacro("\\mel", "\\matrixelement");
 // Matrix macros
 //
 katex.__defineMacro("\\matrixquantity", function (ctx) {
+    const alt = isAlt(ctx);
     const start = ctx.popToken().text;
     const end = braces[start];
-    if (typeof end === "undefined") {
+    if (typeof end === "undefined")
         throw new Error("Expecting opening delimiters after \\qty");
-    }
-    const expr = [start === "{" ? "" : `\\left${start}`];
+    const expr = [
+        start === "{"
+            ? ""
+            : alt && start === "("
+              ? "\\left\\lgroup"
+              : `\\left${start}`,
+    ];
     expr.push("\\begin{matrix}");
     let opened = 0;
     while (true) {
         const next = ctx.popToken().text;
-        if (next === "EOF") {
+        if (next === "EOF")
             throw new Error(`Expecting closing delimiters ${end} after \\mqty`);
-        } else if (next !== end) {
+        else if (next !== end) {
             expr.push(next);
-            if (next === start) {
-                opened++;
-            }
+            if (next === start) opened++;
         } else if (opened > 0) {
             expr.push(next);
             opened--;
         } else {
             expr.push("\\end{matrix}");
-            expr.push(end === "}" ? "" : `\\right${next}`);
+            expr.push(
+                end === "}"
+                    ? ""
+                    : alt && start === "("
+                      ? "\\right\\rgroup"
+                      : `\\right${next}`,
+            );
             break;
         }
     }
     return expr.join(" ");
 });
 katex.__defineMacro("\\mqty", "\\matrixquantity");
+katex.__defineMacro("\\pmqty", "\\mqty({#1})");
+katex.__defineMacro("\\Pmqty", "\\mqty*({#1})");
+katex.__defineMacro("\\bmqty", "\\mqty[{#1}]");
+katex.__defineMacro("\\vmqty", "\\mqty|{#1}|");
 katex.__defineMacro("\\smallmatrixquantity", function (ctx) {
     return `\\tiny\\mqty${popNextArg(ctx)}`;
 });
 katex.__defineMacro("\\smqty", "\\smallmatrixquantity");
+katex.__defineMacro("\\spmqty", "\\smqty({#1})");
+katex.__defineMacro("\\sPmqty", "\\smqty*({#1})");
+katex.__defineMacro("\\sbmqty", "\\smqty[{#1}]");
+katex.__defineMacro("\\svmqty", "\\smqty|{#1}|");
 katex.__defineMacro(
     "\\matrixdeterminant",
     "\\left|\\begin{matrix}#1\\end{matrix}\\right|",
@@ -550,9 +533,8 @@ katex.__defineMacro(
 katex.__defineMacro("\\mdet", "\\matrixdeterminant");
 katex.__defineMacro("\\identitymatrix", function (ctx) {
     const n = parseInt(popNextArg(ctx));
-    if (isNaN(n)) {
+    if (isNaN(n))
         throw new Error("Expecting integers as the parameter of \\imat");
-    }
     return `\\dmat[0]{${new Array(n).fill(1).join(",")}}`;
 });
 katex.__defineMacro("\\imat", "\\identitymatrix");
@@ -568,13 +550,12 @@ katex.__defineMacro("\\xmatrix", function (ctx) {
             "Expecting integers as the second and third parameter of \\xmat",
         );
     }
-    if (!lbl || (n === 1 && m === 1)) {
+    if (!lbl || (n === 1 && m === 1))
         return new Array(n).fill(new Array(m).fill(x).join("&")).join("\\\\");
-    }
     const mat = [];
-    for (let i = 1; i <= n; i++) {
+    for (let i = 0; i < n; i++) {
         const row = [];
-        for (let j = 1; j <= m; ++j) {
+        for (let j = 0; j < m; j++) {
             let label = `${n > 1 ? i : ""}${m > 1 ? j : ""}`;
             row.push(`${x}_{${label}}`);
         }
@@ -591,8 +572,15 @@ katex.__defineMacro("\\zeromatrix", function (ctx) {
 });
 katex.__defineMacro("\\zmat", "\\zeromatrix");
 katex.__defineMacro("\\paulimatrix", function (ctx) {
-    const n = ctx.consumeArg().tokens.filter((t) => t.text !== " ")[0].text;
-    let mat = "";
+    const tokens = ctx.consumeArg().tokens;
+    let n = "";
+    for (const token of tokens) {
+        if (token.text !== " ") {
+            n = token.text;
+            break;
+        }
+    }
+    let mat;
     switch (n) {
         case "0":
             mat = "1&0\\\\0&1";
@@ -620,25 +608,25 @@ katex.__defineMacro("\\pmat", "\\paulimatrix");
 katex.__defineMacro("\\diagonalmatrix", function (ctx) {
     const fill = getSquareParameter(ctx);
     const el = popNextArg(ctx).split(",");
-    const lines = [];
+    const row = [];
     for (let i = 0; i < el.length; i++) {
         let line = new Array(el.length).fill(fill);
         line[i] = expandElem(el[i]);
-        lines.push(line.map((el) => `{${el}}`).join("&"));
+        row.push(line.map((el) => `{${el}}`).join("&"));
     }
-    return lines.join("\\\\");
+    return row.join("\\\\");
 });
 katex.__defineMacro("\\dmat", "\\diagonalmatrix");
 katex.__defineMacro("\\antidiagonalmatrix", function (ctx) {
     const fill = getSquareParameter(ctx);
     const el = popNextArg(ctx).split(",");
-    const lines = [];
+    const row = [];
     for (let i = 0; i < el.length; i++) {
         let line = new Array(el.length).fill(fill);
         line[el.length - i - 1] = expandElem(el[i]);
-        lines.push(line.map((el) => `{${el}}`).join("&"));
+        row.push(line.map((el) => `{${el}}`).join("&"));
     }
-    return lines.join("\\\\");
+    return row.join("\\\\");
 });
 katex.__defineMacro("\\admat", "\\antidiagonalmatrix");
 
@@ -667,32 +655,44 @@ const bracesSize = {
 };
 
 const isDigit = /^\d+$/;
-const dd = (n, f) => `\\dd[${n}]{${f}}`;
-const pd = (n, f) => `\\pd[${n}]{${f}}`;
-const fdv = (n, f) => `\\fd[${n}]{${f}}`;
+const isSpace = /\s+/g;
+
+function dd(n, f) {
+    return `\\dd[${n}]{${f}}`;
+}
+
+function pd(n, f) {
+    return `\\pd[${n}]{${f}}`;
+}
+
+function fdv(n, f) {
+    return `\\fd[${n}]{${f}}`;
+}
+
+function genBracket(a, b, c, alt1, alt2) {
+    return alt1 && alt2
+        ? `\\left\\langle{${a}}\\middle\\vert{${b}}\\middle\\vert{${c}}\\right\\rangle`
+        : alt1
+          ? `\\langle{${a}}|{${b}}|{${c}}\\rangle`
+          : `\\left\\langle{${a}}\\right\\vert{\\!${b}\\!}\\left\\vert{${c}}\\right\\rangle`;
+}
 
 function popNextArg(ctx) {
-    return ctx
-        .consumeArgs(1)[0]
-        .reverse()
-        .map((t) => t.text)
-        .join("");
+    const arg = ctx.consumeArgs(1)[0];
+    let result = "";
+    for (let i = arg.length - 1; i >= 0; i--) result += arg[i].text;
+    return result;
 }
 
 function getSquareParameter(ctx) {
-    while (ctx.future().text === " ") {
-        ctx.popToken();
-    }
+    while (ctx.future().text === " ") ctx.popToken();
     let param = "";
     if (ctx.future().text === "[") {
         ctx.popToken();
         while (true) {
             const ch = ctx.popToken().text;
-            if (ch === "]") {
-                break;
-            } else if (ch === "EOF") {
-                throw new Error("Expecting ]");
-            }
+            if (ch === "]") break;
+            else if (ch === "EOF") throw new Error("Expecting ]");
             param += ch;
         }
     }
@@ -700,9 +700,7 @@ function getSquareParameter(ctx) {
 }
 
 function isAlt(ctx) {
-    while (ctx.future().text === " ") {
-        ctx.popToken();
-    }
+    while (ctx.future().text === " ") ctx.popToken();
     if (ctx.future().text === "*") {
         ctx.popToken();
         return true;
@@ -721,20 +719,27 @@ function getDelimSize(prefix) {
         case "\\Bigg":
             return "\\Biggl";
         default:
-            if (prefix.startsWith("\\")) {
-                throw new Error("Invalid size specifier: " + start);
-            }
+            if (prefix.startsWith("\\"))
+                throw new Error(`Invalid size specifier: ${prefix}`);
             return "";
     }
 }
 
 // Recursively expand nested matrices
 function expandElem(el) {
-    if (el.includes("&") || el.includes("\\\\")) {
-        return `\\begin{matrix}${el
-            .split("\\\\")
-            .map((row) => row.split("&").map(expandElem).join("&"))
-            .join("\\\\")}\\end{matrix}`;
+    if (el.indexOf("&") !== -1 || el.indexOf("\\\\") !== -1) {
+        let rows = el.split("\\\\");
+        let result = "\\begin{matrix}";
+        for (let i = 0; i < rows.length; i++) {
+            if (i > 0) result += "\\\\";
+            let cols = rows[i].split("&");
+            for (let j = 0; j < cols.length; j++) {
+                if (j > 0) result += "&";
+                result += expandElem(cols[j]);
+            }
+        }
+        result += "\\end{matrix}";
+        return result;
     }
-    return el.replace(/\s+/g, "");
+    return el.replace(isSpace, "");
 }
