@@ -1,4 +1,4 @@
-# Physics Extension
+# physics extension
 
 This extension adds a set of macros from the [physics](https://ctan.org/pkg/physics) package.
 
