@@ -42,10 +42,11 @@
 katex.__defineMacro("\\quantity", function (ctx) {
     let size = "";
     if (sizes.includes(ctx.future().text)) size = ctx.popToken().text;
-    const start = ctx.popToken().text;
+    const start = ctx.future().text;
     const end = braces[start];
     if (typeof end === "undefined")
-        throw new Error("Expecting opening delimiters after macro");
+        return "\\left(" + getBody(ctx, "(", ")", size, false) + "\\right)";
+    ctx.popToken();
     return getBody(ctx, start, end, size);
 });
 katex.__defineMacro("\\qty", "\\quantity");
