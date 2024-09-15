@@ -5,7 +5,7 @@
  *  This file implements a KaTeX version of physics version 1.3.
  *  https://ctan.org/pkg/physics
  *
- *  Some of the implementation is based on the following sources:
+ *  Some of the implementation is adapted from the following sources:
  *   - https://github.com/balthild/katex-physics
  *   - https://github.com/mathjax/MathJax-third-party-extensions/tree/master/legacy/physics
  *   - https://github.com/mathjax/MathJax-src
@@ -195,7 +195,8 @@ katex.__defineMacro("\\divergence", function(ctx) {
     ctx.popToken();
     return "\\boldsymbol\\nabla\\vdot\\negmedspace" + getBody(ctx, start, end);
 });
-katex.__defineMacro("\\div", "\\divergence");
+katex.__defineMacro("\\div", "\\divergence"); // old \div renamed to \divide
+katex.__defineMacro("\\divide", "\u00f7");
 katex.__defineMacro("\\curl", function(ctx) {
     const start = ctx.future().text;
     const end = braces[start];
@@ -347,12 +348,12 @@ katex.__defineMacro(
     "\\Re",
     "\\operatorname{Re}\\left\\{#1\\right\\}"
 ); // old \Re renamed to \real
-katex.__defineMacro("\\real", "\\mathfrak{R}");
+katex.__defineMacro("\\real", "\u211c");
 katex.__defineMacro(
     "\\Im",
     "\\operatorname{Im}\\left\\{#1\\right\\}"
 ); // old \Im renamed to \imaginary
-katex.__defineMacro("\\imaginary", "\\mathfrak{I}");
+katex.__defineMacro("\\imaginary", "\u2111");
 
 /******************
  * 2.4 Quick quad text
@@ -365,9 +366,9 @@ katex.__defineMacro("\\qqtext", function(ctx) {
 katex.__defineMacro("\\qq", "\\qqtext");
 katex.__defineMacro("\\qcomma", ",\\quad");
 katex.__defineMacro("\\qc", "\\qcomma");
+katex.__defineMacro("\\qcc", "\\quad\\text{c.c.}\\quad");
 
 const qMacros = [
-    "\\qcc",
     "\\qif",
     "\\qthen",
     "\\qelse",
