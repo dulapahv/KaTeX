@@ -10,6 +10,7 @@ These extensions are provided by KaTeX.
 - [Copy-tex](https://github.com/KaTeX/KaTeX/tree/main/contrib/copy-tex): When selecting and copying KaTeX-rendered elements, copies their LaTeX source to the clipboard
 - [`math/tex` Custom Script Type](https://github.com/KaTeX/KaTeX/tree/main/contrib/mathtex-script-type): Automatically displays LaTeX math inside `script` tags with `type=math/tex`
 - [mhchem](https://github.com/KaTeX/KaTeX/tree/main/contrib/mhchem): Write beautiful chemical equations easily
+- [physics](https://github.com/KaTeX/KaTeX/tree/main/contrib/physics): Adds a set of macros from the [physics](https://ctan.org/pkg/physics) package
 
 ## Libraries
 
