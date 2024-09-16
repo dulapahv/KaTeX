@@ -15,7 +15,7 @@ See the [physics Manual](http://mirrors.ctan.org/macros/latex/contrib/physics/ph
   - New `\sin` supports automatic bracing and optional power argument, e.g. `\sin[2](x)`.
 - Similar behavior has also been extended to the following functions: `\exponential`,`\logarithm`,`\naturallogarithm`,`\determinant`,`\Probability`, e.g. `\exp` and `\exponential`.
 
-## List of macros added
+## List of added macros
 
 List of physics macros added to KaTeX from the physics package section 2.
 

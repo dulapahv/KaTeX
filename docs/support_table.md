@@ -223,8 +223,9 @@ $\gdef\VERT{|}$
 |\Bqty|$\\{a\\}$|`\Bqty{a}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\bqty|$[a]$|`\bqty{a}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\Bra|$\Bra{\psi}$|`\Bra{\psi}`|
-|\bra|$\bra{\psi}$|`\bra{\psi}`|
+|\bra|$\bra{\psi}$|`\bra{\psi}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension to support automatic sizing and contraction|
 |\braket|$\braket{\phi\VERT\psi}$|<code>\braket{\phi&#124;\psi}</code>|
+|\braket|$\braket{a\|b}$|`\braket{a}{b}` Replaces old `\braket`. Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\braket|$\braket{\phi\vert\psi}$|`\braket{a}{b}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\Braket|$\Braket{ ϕ \VERT \frac{∂^2}{∂ t^2} \VERT ψ }$| <code>\Braket{ ϕ &#124; \frac{∂^2}{∂ t^2} &#124; ψ }</code>|
 |\brace|${n\brace k}$|`{n\brace k}`|
@@ -353,6 +354,8 @@ use `\ce` instead|
 |\dbinom|$\dbinom n k$|`\dbinom n k`|
 |\dblcolon|$\dblcolon$||
 |{dcases}|$\begin{dcases}a&\text{if }b\\c&\text{if }d\end{dcases}$|`\begin{dcases}`<br>&nbsp;&nbsp;&nbsp;`a &\text{if } b  \\`<br>&nbsp;&nbsp;&nbsp;`c &\text{if } d`<br>`\end{dcases}`|
+|\dd|$\mathrm{d}^3x$|`\dd[3](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\dim|$\dim$||
 |\ddag|$\ddag$||
 |\ddagger|$\ddagger$||
 |\ddddot|<span style="color:firebrick;">Not supported</span>||
@@ -366,6 +369,7 @@ use `\ce` instead|
 |\degree|$\degree$||
 |\delta|$\delta$||
 |\Delta|$\Delta$||
+|\derivative|$\frac{\mathrm{d}^nf}{\mathrm{d}x^n}$|`\derivative[n]{f}{x}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\det|$\det{A}$||
 |\determinant|$\det{A}$|Replaces old `\det` when using [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\Digamma|<span style="color:firebrick;">Not supported</span>||
@@ -377,6 +381,7 @@ use `\ce` instead|
 |\diamond|$\diamond$||
 |\diamonds|$\diamonds$||
 |\diamondsuit|$\diamondsuit$||
+|\differential|$\mathrm{d}^3x$|`\differential[3](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\dim|$\dim$||
 |\displaylines|<span style="color:firebrick;">Not supported</span>||
 |\displaystyle|$\displaystyle\sum_0^n$|`\displaystyle\sum_0^n`|
@@ -406,6 +411,8 @@ use `\ce` instead|
 |\downharpoonleft|$\downharpoonleft$||
 |\downharpoonright|$\downharpoonright$||
 |{drcases}|$\begin{drcases}a&\text{if }b\\c&\text{if }d\end{drcases}$|`\begin{drcases}`<br>&nbsp;&nbsp;&nbsp;`a &\text{if } b  \\`<br>&nbsp;&nbsp;&nbsp;`c &\text{if } d`<br>`\end{drcases}`|
+|\dv|$\frac{\mathrm{d}^nf}{\mathrm{d}x^n}$|`\dv[n]{f}{x}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\dyad|$\|a\rangle\langle b\|$|`\dyad{a}{b}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 
 ## E
 
@@ -446,13 +453,16 @@ use `\ce` instead|
 |\eta|$\eta$||
 |\eth|$\eth$||
 |\euro|<span style="color:firebrick;">Not supported</span>||
+|\ev|$\langle\Psi\|A\|\Psi\rangle$|`ev{A}{\Psi}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\eval|$\left[x\vphantom{\int}\right\|_0^\infty$|`\eval[x\|_0^\infty` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\evaluated|$\left[x\vphantom{\int}\right\|_0^\infty$|`\evaluated[x\|_0^\infty` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\exist|$\exist$||
 |\exists|$\exists$||
 |\exp|$\exp$||
 |\expandafter|||
+|\expectationvalue|$\langle\Psi\|A\|\Psi\rangle$|`expectationvalue{A}{\Psi}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\exponential|$\exp$|Replaces old `\exp` when using [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\expval|$\langle\Psi\|A\|\Psi\rangle$|`expval{A}{\Psi}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 
 ## F
 
@@ -461,6 +471,7 @@ use `\ce` instead|
 |\fallingdotseq|$\fallingdotseq$||
 |\fbox|$\fbox{Hi there!}$|`\fbox{Hi there!}`|
 |\fcolorbox|$\fcolorbox{red}{aqua}{A}$|`\fcolorbox{red}{aqua}{A}`|
+|\fdv|$\frac{\delta F}{\delta g}$|`\fdv{F}{g}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\fi|<span style="color:firebrick;">Not supported</span>|[Issue #1003](https://github.com/KaTeX/KaTeX/issues/1003)|
 |\Finv|$\Finv$||
 |\flat|$\flat$||
@@ -469,6 +480,7 @@ use `\ce` instead|
 |\frac|$\frac a b$|`\frac a b`|
 |\frak|$\frak{AaBb}$|`\frak{AaBb}`|
 |\frown|$\frown$||
+|\functionalderivative|$\frac{\delta F}{\delta g}$|`\functionalderivative{F}{g}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\futurelet|||
 
 ## G
@@ -577,11 +589,13 @@ use `\ce` instead|
 |\infin|$\infin$||
 |\infty|$\infty$||
 |\injlim|$\injlim$| `\injlim` |
+|\innerproduct|$\braket{a\|b}$|`\innerproduct{a}{b}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\int|$\int$||
 |\intercal|$\intercal$||
 |\intop|$\intop$||
 |\Iota|$\Iota$||
 |\iota|$\iota$||
+|\ip|$\braket{a\|b}$|`\ip{a}{b}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\isin|$\isin$||
 |\it|${\it AaBb}$|`{\it AaBb}`|
 |\itshape|<span style="color:firebrick;">Not supported</span>||
@@ -599,7 +613,8 @@ use `\ce` instead|
 |\ker|$\ker$||
 |\kern|$I\kern-2.5pt R$|`I\kern-2.5pt R`|
 |\Ket|$\Ket{\psi}$|`\Ket{\psi}`|
-|\ket|$\ket{\psi}$|`\ket{\psi}`|
+|\ket|$\ket{\psi}$|`\ket{\psi}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension to support automatic sizing|
+|\ketbra|$\|a\rangle\langle b\|$|`\ketbra{a}{b}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\Koppa|<span style="color:firebrick;">Not supported</span>||
 |\koppa|<span style="color:firebrick;">Not supported</span>||
 
@@ -743,12 +758,15 @@ use `\ce` instead|
 |\matrix|<span style="color:firebrick;">Not supported</span>|See `{matrix}`|
 |{matrix}|$\begin{matrix}a&b\\c&d\end{matrix}$|`\begin{matrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{matrix}`|
 |{matrix*}|$\begin{matrix*}[r]0&-1\\-1&0\end{matrix*}$|`\begin{matrix*}[r]`<br>&nbsp;&nbsp;&nbsp;`0 & -1 \\`<br>&nbsp;&nbsp;&nbsp;`-1 & 0`<br>`\end{matrix*}`|
+|\matrixelement|$\langle n\|A\|m\rangle$|`\matrixelement{n}{A}{m}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\matrixel|$\langle n\|A\|m\rangle$|`\matrixel{n}{A}{m}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\max|$\max$||
 |\mbox|<span style="color:firebrick;">Not supported</span>||
 |\md|<span style="color:firebrick;">Not supported</span>||
 |\mdseries|<span style="color:firebrick;">Not supported</span>||
 |\measuredangle|$\measuredangle$||
 |\medspace|$a\medspace b$|`a\medspace b`|
+|\mel|$\langle n\|A\|m\rangle$|`\mel{n}{A}{m}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\mho|$\mho$||
 |\mid|$\{x∈ℝ\mid x>0\}$|`\{x∈ℝ\mid x>0\}`|
 |\middle|$P\left(A\middle\vert B\right)$|`P\left(A\middle\vert B\right)`|
@@ -868,12 +886,14 @@ use `\ce` instead|
 |\operatorname|$\operatorname{asin} x$|`\operatorname{asin} x`|
 |\operatorname\*|$\operatorname*{asin}\limits_y x$|`\operatorname*{asin}\limits_y x`|
 |\operatornamewithlimits|$\operatornamewithlimits{asin}\limits_y x$|`\operatornamewithlimits{asin}\limits_y x`|
+|\op|$\|a\rangle\langle b\|$|`\op{a}{b}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\oplus|$\oplus$||
 |\or|<span style="color:firebrick;">Not supported</span>||
 |\order|$\mathcal{O}(x^2)$|`\order{x^2}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\origof|$\origof$||
 |\oslash|$\oslash$||
 |\otimes|$\otimes$||
+|\outerproduct|$\|a\rangle\langle b\|$|`\outerproduct{a}{b}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\over|${a+1 \over b+2}+c$|`{a+1 \over b+2}+c`|
 |\overbrace|$\overbrace{x+⋯+x}^{n\text{ times}}$|`\overbrace{x+⋯+x}^{n\text{ times}}`|
 |\overbracket|<span style="color:firebrick;">Not supported</span>||
@@ -900,7 +920,9 @@ use `\ce` instead|
 |\parallel|$\parallel$||
 |\part|<span style="color:firebrick;">Not supported</span>|[Deprecated](https://en.wikipedia.org/wiki/Help:Displaying_a_formula#Deprecated_syntax)|
 |\partial|$\partial$||
+|\partialderivative|$\frac{\partial^2f}{\partial x\partial y}$|`\partialderivative{f}{x}{y}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\pb|$\{A,B\}$|`\pb{A}{B}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\pdv|$\frac{\partial^2f}{\partial x\partial y}$|`\pdv{f}{x}{y}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\perp|$\perp$||
 |\phantom|$\Gamma^{\phantom{i}j}_{i\phantom{j}k}$|`\Gamma^{\phantom{i}j}_{i\phantom{j}k}`|
 |\phase|$\phase{-78^\circ}$|`\phase{-78^\circ}`|
@@ -1281,10 +1303,12 @@ use `\ce` instead|
 |:---------------|:------------|:-----------------|
 |\v|$\text{\v{a}}$|`\text{\v{a}}`|
 |\va|$\mathbf{\hat{a}}$|`\va{a}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\var|$\delta F[g(x)]$|`\var{F[g(x)]}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\varcoppa|<span style="color:firebrick;">Not supported</span>||
 |\varDelta|$\varDelta$||
 |\varepsilon|$\varepsilon$||
 |\varGamma|$\varGamma$||
+|\variation|$\delta F[g(x)]$|`\variation{F[g(x)]}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\varinjlim|$\varinjlim$|`\varinjlim`|
 |\varkappa|$\varkappa$||
 |\varLambda|$\varLambda$||
