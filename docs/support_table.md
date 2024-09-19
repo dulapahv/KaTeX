@@ -75,10 +75,11 @@ $\gdef\VERT{|}$
 |\acos|$\operatorname{acos}^2(x)$|`\acos[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\acosine|$\operatorname{acos}$|Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\acot|$\operatorname{acot}^2(x)$|`\acot[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
-|\acotangent|$\operatorname{acotangent}$|Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\acotangent|$\operatorname{acot}$|Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\acsc|$\operatorname{acsc}^2(x)$|`\acsc[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
-|\acosecant|$\operatorname{acosecant}$|Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\acosecant|$\operatorname{acsc}$|Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\acute|$\acute e$|`\acute e`|
+|\admat|$\begin{matrix}&&1\\&2&\\3&&\end{matrix}$|`admat{1,2,3}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\AE|$\text{\AE}$|`\text{\AE}`|
 |\ae|$\text{\ae}$|`\text{\ae}`|
 |\alef|$\alef$||
@@ -101,6 +102,7 @@ $\gdef\VERT{|}$
 |\angln|$a_\angln$||
 |\angle|$\angle$||
 |\anticommutator|$\{A,B\}$|`\anticommutator{A}{B}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\antidiagonalmatrix|$\begin{matrix}&&1\\&2&\\3&&\end{matrix}$|`antidiagonalmatrix{1,2,3}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\approx|$\approx$||
 |\approxeq|$\approxeq$||
 |\approxcolon|$\approxcolon$||
@@ -108,19 +110,19 @@ $\gdef\VERT{|}$
 |\arccos|$\arccos$||
 |\arccos|$\arccos^2(x)$|`\arccos[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension. Old `\arccos` is replaced with `\arccosine`|
 |\arccosecant|$\operatorname{arccosecant}$|Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
-|\arccosine|$\operatorname{arccosine}$|Replaces old `\arccos` when using [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\arccosine|$\arccos$|Replaces old `\arccos` when using [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\arccot|$\operatorname{arccot}^2(x)$|`\arccot[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
-|\arccotangent|$\operatorname{arccotangent}$|Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\arccotangent|$\operatorname{arccot}$|Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\arccsc|$\operatorname{arccsc}^2(x)$|`\arccsc[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\arcctg|$\operatorname{arcctg}$||
-|\arcsin|$\operatorname{arcsin}$||
-|\arcsin|$\operatorname{arcsin}^2(x)$|`\arcsin[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension. Old `\arcsin` is replaced with `\arcsine`|
-|\arcsine|$\operatorname{arcsin}$|Replaces old `\arcsin` when using [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\arcsin|$\arcsin$||
+|\arcsin|$\arcsin^2(x)$|`\arcsin[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension. Old `\arcsin` is replaced with `\arcsine`|
+|\arcsine|$\arcsin$|Replaces old `\arcsin` when using [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\arcsec|$\operatorname{arcsec}^2(x)$|`\arcsec[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
-|\arcsecant|$\operatorname{arcsecant}$|Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\arcsecant|$\operatorname{arcsec}$|Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\arctan|$\arctan$||
 |\arctan|$\arctan^2(x)$|`\arctan[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension. Old `\arctan` is replaced with `\arctangent`|
-|\arctangent|$\operatorname{arctangent}$|Replaces old `\arctan` when using [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\arctangent|$\arctan$|Replaces old `\arctan` when using [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\arctg|$\arctg$||
 |\arg|$\arg$||
 |\argmax|$\argmax$||
@@ -131,13 +133,13 @@ $\gdef\VERT{|}$
 |\Arrowvert|<span style="color:firebrick;">Not supported</span>|see `\Vert`|
 |\arrowvert|<span style="color:firebrick;">Not supported</span>|see `\vert`|
 |\asec|$\operatorname{asec}^2(x)$|`\asec[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
-|\asecant|$\operatorname{asecant}$|Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\asecant|$\operatorname{asec}$|Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\asin|$\operatorname{asin}^2(x)$|`\asin[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
-|\asine|$\operatorname{asine}$|Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\asine|$\operatorname{asin}$|Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\ast|$\ast$||
 |\asymp|$\asymp$||
 |\atan|$\operatorname{atan}^2(x)$|`\atan[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
-|\atangent|$\operatorname{atangent}$|Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\atangent|$\operatorname{atan}$|Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\atop|${a \atop b}$|`{a \atop b}`|
 |\atopwithdelims|<span style="color:firebrick;">Not supported</span>||
 
@@ -205,6 +207,7 @@ $\gdef\VERT{|}$
 |\blacktriangleleft|$\blacktriangleleft$||
 |\blacktriangleright|$\blacktriangleright$||
 |\bm|$\bm{AaBb}$|`\bm{AaBb}`|
+|\bmqty|$\begin{bmatrix}a&b\\c&d\end{bmatrix}$|`\bmqty{a & b \\ c & d}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |{Bmatrix}|$\begin{Bmatrix}a&b\\c&d\end{Bmatrix}$|`\begin{Bmatrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{Bmatrix}`|
 |{Bmatrix*}|$\begin{Bmatrix*}[r]0&-1\\-1&0\end{Bmatrix*}$|`\begin{Bmatrix*}[r]`<br>&nbsp;&nbsp;&nbsp;`0 & -1 \\`<br>&nbsp;&nbsp;&nbsp;`-1 & 0`<br>`\end{Bmatrix*}`|
 |{bmatrix}|$\begin{bmatrix}a&b\\c&d\end{bmatrix}$|`\begin{bmatrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{bmatrix}`|
@@ -308,20 +311,25 @@ use `\ce` instead|
 |\coppa|<span style="color:firebrick;">Not supported</span>||
 |\coprod|$\coprod$||
 |\copyright|$\copyright$||
-|\cos|$\cos^2(x)$|`\cos[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\cos|$\cos$||
+|\cos|$\cos^2(x)$|`\cos[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension. Old `\cos` is replaced with `\cosine`|
 |\cosec|$\cosec$||
 |\cosecant|$\csc$|Replaces old `\csc` when using [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
-|\cosh|$\cosh^2(x)$|`\cosh[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\cosh|$\cosh$||
+|\cosh|$\cosh^2(x)$|`\cosh[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension. Replaces old `\cosh` with `\hypcosine`|
 |\cosine|$\cos$|Replaces old `\cos` when using [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
-|\cot|$\cot^2(x)$|`\cot[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\cot|$\cot$||
+|\cot|$\cot^2(x)$|`\cot[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension. Old `\cot` is replaced with `\cotangent`|
 |\cotangent|$\cot$|Replaces old `\cot` when using [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\cotg|$\cotg$||
-|\coth|$\coth^2(x)$|`\coth[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\coth|$\coth$||
+|\coth|$\coth^2(x)$|`\coth[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension. Replaces old `\coth` with `\hypcotangent`|
 |\cr|$\begin{matrix} a & b\cr c & d \end{matrix}$|`\begin{matrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \cr`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{matrix}`|
 |\cross|$a\boldsymbol\times b$|`a\cross b` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\crossproduct|$a\boldsymbol\times b$|`a\crossproduct b` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\cp|$a\boldsymbol\times b$|`a\cp b` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
-|\csc|$\csc^2(x)$|`\csc[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\csc|$\csc$||
+|\csc|$\csc^2(x)$|`\csc[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension. Old `\csc` is replaced with `\cosecant`|
 |\csch|$\operatorname{csch}^2(x)$|Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\cssId|<span style="color:firebrick;">Not supported</span>|A PR is pending.
 |\ctg|$\ctg$||
@@ -370,12 +378,13 @@ use `\ce` instead|
 |\delta|$\delta$||
 |\Delta|$\Delta$||
 |\derivative|$\frac{\mathrm{d}^nf}{\mathrm{d}x^n}$|`\derivative[n]{f}{x}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
-|\det|$\det{A}$||
+|\det|$\det{A}$|Automatic brace sizing is supported with [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension. Old `\det` is replaced with `\determinant`|
 |\determinant|$\det{A}$|Replaces old `\det` when using [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\Digamma|<span style="color:firebrick;">Not supported</span>||
 |\digamma|$\digamma$||
 |\dfrac|$\dfrac{a-1}{b-1}$|`\dfrac{a-1}{b-1}`|
 |\diagdown|$\diagdown$||
+|\diagonalmatrix|$\begin{matrix}1&&\\&2&\\&&3\end{matrix}$|`diagonalmatrix{1,2,3}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\diagup|$\diagup$||
 |\Diamond|$\Diamond$||
 |\diamond|$\diamond$||
@@ -390,6 +399,7 @@ use `\ce` instead|
 |\divide|&#247;|Replaces old `\div` when using [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\divergence|$\boldsymbol\nabla\boldsymbol\cdot\mathbf{a}$|`\divergence{\vb{a}}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\divideontimes|$\divideontimes$||
+|\dmat|$\begin{matrix}1&&\\&2&\\&&3\end{matrix}$|`dmat{1,2,3}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\dot|$\dot x$|`\dot x`|
 |\Doteq|$\Doteq$||
 |\doteq|$\doteq$||
@@ -458,7 +468,7 @@ use `\ce` instead|
 |\evaluated|$\left[x\vphantom{\int}\right\|_0^\infty$|`\evaluated[x\|_0^\infty` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\exist|$\exist$||
 |\exists|$\exists$||
-|\exp|$\exp$||
+|\exp|$\exp$|Automatic brace sizing is supported with [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension. Old `\exp` is replaced with `\exponential`|
 |\expandafter|||
 |\expectationvalue|$\langle\Psi\|A\|\Psi\rangle$|`expectationvalue{A}{\Psi}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\exponential|$\exp$|Replaces old `\exp` when using [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
@@ -568,6 +578,7 @@ use `\ce` instead|
 |Symbol/Function |  Rendered   | Source or Comment|
 |:---------------|:------------|:-----------------|
 |\i|$\text{\i}$|`\text{\i}`|
+|\identitymatrix|$\begin{matrix}1&0&0\\0&1&0\\0&0&1\end{matrix}$|`\identitymatrix{3}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\idotsint|<span style="color:firebrick;">Not supported</span>||
 |\iddots|<span style="color:firebrick;">Not supported</span>|[Issue #1223](https://github.com/KaTeX/KaTeX/issues/1223)|
 |\if|<span style="color:firebrick;">Not supported</span>|[Issue #1003](https://github.com/KaTeX/KaTeX/issues/1003)|
@@ -578,8 +589,11 @@ use `\ce` instead|
 |\iiint|$\iiint$||
 |\iint|$\iint$||
 |\Im|$\Im$||
+|\Im|$\operatorname{Im}\{z\}$|`\Im{z}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension. Old `\Im` is replaced with `\imaginary`|
 |\image|$\image$||
 |\imageof|$\imageof$||
+|\imaginary|$\Im$|Replaces old `\Im` when using [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\imat|$\begin{matrix}1&0&0\\0&1&0\\0&0&1\end{matrix}$|`\imat{3}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\imath|$\imath$||
 |\impliedby|$P\impliedby Q$|`P\impliedby Q`|
 |\implies|$P\implies Q$|`P\implies Q`|
@@ -688,13 +702,13 @@ use `\ce` instead|
 |\lll|$\lll$||
 |\llless|$\llless$||
 |\lmoustache|$\lmoustache$||
-|\ln|$\ln$||
+|\ln|$\ln$|Automatic brace sizing is supported with [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension. Old `\ln` is replaced with `\naturallogarithm`|
 |\lnapprox|$\lnapprox$||
 |\lneq|$\lneq$||
 |\lneqq|$\lneqq$||
 |\lnot|$\lnot$||
 |\lnsim|$\lnsim$||
-|\log|$\log$||
+|\log|$\log$|Automatic brace sizing is supported with [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension. Old `\log` is replaced with `\logarithm`|
 |\logarithm|$\log$|Replaces old `\log` when using [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\long|||
 |\Longleftarrow|$\Longleftarrow$||
@@ -758,8 +772,10 @@ use `\ce` instead|
 |\matrix|<span style="color:firebrick;">Not supported</span>|See `{matrix}`|
 |{matrix}|$\begin{matrix}a&b\\c&d\end{matrix}$|`\begin{matrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{matrix}`|
 |{matrix*}|$\begin{matrix*}[r]0&-1\\-1&0\end{matrix*}$|`\begin{matrix*}[r]`<br>&nbsp;&nbsp;&nbsp;`0 & -1 \\`<br>&nbsp;&nbsp;&nbsp;`-1 & 0`<br>`\end{matrix*}`|
+|\matrixdeterminant|$\begin{vmatrix}a&b\\c&d\end{vmatrix}$|`\matrixdeterminant{a & b \\ c & d}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\matrixelement|$\langle n\|A\|m\rangle$|`\matrixelement{n}{A}{m}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\matrixel|$\langle n\|A\|m\rangle$|`\matrixel{n}{A}{m}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\matrixquantity|$\begin{matrix}a&b\\c&d\end{matrix}$|`\matrixquantity{a & b \\ c & d}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\max|$\max$||
 |\mbox|<span style="color:firebrick;">Not supported</span>||
 |\md|<span style="color:firebrick;">Not supported</span>||
@@ -782,6 +798,7 @@ use `\ce` instead|
 |\moveleft|<span style="color:firebrick;">Not supported</span>||
 |\moveright|<span style="color:firebrick;">Not supported</span>||
 |\mp|$\mp$||
+|\mqty|$\begin{matrix}a&b\\c&d\end{matrix}$|`\mqty{a & b \\ c & d}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\mskip|$a\mskip{10mu}b$|`a\mskip{10mu}b`|
 |\mspace|<span style="color:firebrick;">Not supported</span>||
 |\Mu|$\Mu$||
@@ -831,11 +848,11 @@ use `\ce` instead|
 |\noexpand|||
 |\nolimits|$\lim\nolimits_x$|`\lim\nolimits_x`|
 |\nonumber|$$\begin{align}a&=b+c\nonumber\\d+e&=f\end{align}$$|`\begin{align}`<br>&nbsp;&nbsp;&nbsp;`a&=b+c \nonumber\\`<br>&nbsp;&nbsp;&nbsp;`d+e&=f`<br>`\end{align}`|
+|\norm|$\Vert a\Vert$|`\norm{a}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\normalfont|<span style="color:firebrick;">Not supported</span>||
 |\normalsize|$\normalsize normalsize$|`\normalsize normalsize`|
 |\not|$\not =$|`\not =`|
 |\notag|$$\begin{align}a&=b+c\notag\\d+e&=f\end{align}$$|`\begin{align}`<br>&nbsp;&nbsp;&nbsp;`a&=b+c \notag\\`<br>&nbsp;&nbsp;&nbsp;`d+e&=f`<br>`\end{align}`|
-|\norm|$\Vert a\Vert$|`\norm{a}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\notin|$\notin$||
 |\notni|$\notni$||
 |\nparallel|$\nparallel$||
@@ -923,6 +940,7 @@ use `\ce` instead|
 |\partialderivative|$\frac{\partial^2f}{\partial x\partial y}$|`\partialderivative{f}{x}{y}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\pb|$\{A,B\}$|`\pb{A}{B}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\pdv|$\frac{\partial^2f}{\partial x\partial y}$|`\pdv{f}{x}{y}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\paulimatrix|$\begin{pmatrix}0&-i\\i&0\end{pmatrix}$|`\paulimatrix{2}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\perp|$\perp$||
 |\phantom|$\Gamma^{\phantom{i}j}_{i\phantom{j}k}$|`\Gamma^{\phantom{i}j}_{i\phantom{j}k}`|
 |\phase|$\phase{-78^\circ}$|`\phase{-78^\circ}`|
@@ -935,16 +953,19 @@ use `\ce` instead|
 |\plim|$\plim$||
 |\plusmn|$\plusmn$||
 |\pm|$\pm$||
+|\pmat|$\begin{pmatrix}0&-i\\i&0\end{pmatrix}$|`\pmat{2}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\pmatrix|<span style="color:firebrick;">Not supported</span>|See `{pmatrix}`|
 |{pmatrix}|$\begin{pmatrix}a&b\\c&d\end{pmatrix}$|`\begin{pmatrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{pmatrix}`
 |{pmatrix*}|$\begin{pmatrix*}[r]0&-1\\-1&0\end{pmatrix*}$|`\begin{pmatrix*}[r]`<br>&nbsp;&nbsp;&nbsp;`0 & -1 \\`<br>&nbsp;&nbsp;&nbsp;`-1 & 0`<br>`\end{pmatrix*}`|
 |\pmb|$\pmb{\mu}$|`\pmb{\mu}`|
 |\pmod|$x\pmod a$|`x\pmod a`|
+|\Pmqty|$\left\lgroup\begin{matrix}a&b\\c&d\end{matrix}\right\rgroup$|`\Pmqty{a & b \\ c & d}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\pmqty|$\begin{pmatrix}a&b\\c&d\end{pmatrix}$|`\pmqty{a & b \\ c & d}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\pod|$x \pod a$|`x \pod a`|
 |\poissonbracket|$\{A,B\}$|`\poissonbracket{A}{B}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\pounds|$\pounds$||
 |\pqty|$(a)$|`\pqty{a}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
-|\Pr|$\Pr$||
+|\Pr|$\Pr$|Automatic brace sizing is supported with [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension. Old `\Pr` is replaced with `\Probability`|
 |\principalvalue|$\mathcal{P}\int f(z)\mathrm{d}z$|`\principalvalue{\int f(z) \dd{z}}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\Probability|$\Pr$|Replaces old `\Pr` when using [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\prec|$\prec$||
@@ -990,23 +1011,25 @@ use `\ce` instead|
 |\qor|$a\quad\text{or}\quad b$|`a\qor b` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\qotherwise|$a\quad\text{otherwise}\quad b$|`a\qotherwise b` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\qthen|$a\quad\text{then}\quad b$|`a\qthen b` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
-|\qty|$\{a\}$|`\qty{a}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\qty|$(a)$|`\qty(a)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\qq|$a\quad\text{and}\quad b$|`a\qq{and} b` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\qqtext|$a\quad\text{and}\quad b$|`a\qqtext{and} b` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\qquad|$a\qquad\qquad{b}$|`a\qquad\qquad{b}`|
 |\qsince|$a\quad\text{since}\quad b$|`a\qsince b` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
-|\quantity|$\{a\}$|`\qty{a}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\quantity|$(a)$|`\quantity(a)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\quad|$a\quad\quad{b}$|`a\quad\quad{b}`|
 |\qunless|$a\quad\text{unless}\quad b$|`a\qunless b` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\qusing|$a\quad\text{using}\quad b$|`a\qusing b` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 
 ## R
 
+|Symbol/Function |  Rendered   | Source or Comment|
+|:---------------|:------------|:-----------------|
 |\R|$\R$||
 |\r|$\text{\r{a}}$|`\text{\r{a}}`|
 |\raise|<span style="color:firebrick;">Not supported</span>|see `\raisebox`|
 |\raisebox|$h\raisebox{2pt}{ighe}r$|`h\raisebox{2pt}{$ighe$}r`|
-|\rank|$\operatorname{rank} M$||`\rank M` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\rank|$\operatorname{rank} M$|`\rank M` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\rang|$\langle A\rang$|`\langle A\rang`|
 |\rangle|$\langle A\rangle$|`\langle A\rangle`|
 |\Rarr|$\Rarr$||
@@ -1018,7 +1041,7 @@ use `\ce` instead|
 |\rbrack|$\rbrack$||
 |{rcases}|$\begin{rcases}a&\text{if }b\\c&\text{if }d\end{rcases}$|`\begin{rcases}`<br>&nbsp;&nbsp;&nbsp;`a &\text{if } b  \\`<br>&nbsp;&nbsp;&nbsp;`c &\text{if } d`<br>`\end{rcases}`|
 |\rceil|$\rceil$||
-|\Re|&#8476;||
+|\Re|$\real$||
 |\Re|$\operatorname{Re}\{z\}$|`\Re{z}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension. Old `\Re` is replaced with `\real`|
 |\Res|$\operatorname{Res}[f(z)]$|`\Res[f(z)]` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\real|$\real$|Replaces old `\Re` when using [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
@@ -1104,6 +1127,7 @@ use `\ce` instead|
 |\sin|$\sin^2(x)$|`\sin[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension. Old `\sin` is replaced with `\sine`|
 |\sine|$\sin$|Replaces old `\sin` when using [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\sinh|$\sinh$||
+|\sinh|$\sinh^2(x)$|`\sinh[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension. Old `\sinh` is replaced with `\hypsine`|
 |\sixptsize|$\sixptsize sixptsize$|`\sixptsize sixptsize`|
 |\sh|$\sh$||
 |\skew|<span style="color:firebrick;">Not supported</span>||
@@ -1113,11 +1137,13 @@ use `\ce` instead|
 |\smallfrown|$\smallfrown$||
 |\smallint|$\smallint$||
 |{smallmatrix}|$\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}$|`\begin{smallmatrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{smallmatrix}`|
+|\smallmatrixquantity|$\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}$|`\smallmatrixquantity{a & b \\ c & d}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\smallsetminus|$\smallsetminus$||
 |\smallsmile|$\smallsmile$||
 |\smash|$\left(x^{\smash{2}}\right)$|`\left(x^{\smash{2}}\right)`|
 |\smile|$\smile$||
 |\smiley|<span style="color:firebrick;">Not supported</span>||
+|\smqty|$\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}$|`\smqty{a & b \\ c & d}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\sout|$\sout{abc}$|`\sout{abc}`|
 |\Space|<span style="color:firebrick;">Not supported</span>|see `\space`
 |\space|$a\space b$|`a\space b`|
@@ -1180,6 +1206,7 @@ use `\ce` instead|
 |\tan|$\tan^2(x)$|`\tan[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension. Old `\tan` is replaced with `\tangent`|
 |\tangent|$\tan$|Replaces old `\tan` when using [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\tanh|$\tanh$||
+|\tanh|$\tanh^2(x)$|`\tanh[2](x)` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension. Old `\tanh` is replaced with `\hyptangent`|
 |\Tau|$\Tau$||
 |\tau|$\tau$||
 |\tbinom|$\tbinom n k$|`\tbinom n k`|
@@ -1301,8 +1328,7 @@ use `\ce` instead|
 
 |Symbol/Function |  Rendered   | Source or Comment|
 |:---------------|:------------|:-----------------|
-|\v|$\text{\v{a}}$|`\text{\v{a}}`|
-|\va|$\mathbf{\hat{a}}$|`\va{a}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\va|$\mathbf{\vec{a}}$|`\va{a}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\var|$\delta F[g(x)]$|`\var{F[g(x)]}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\varcoppa|<span style="color:firebrick;">Not supported</span>||
 |\varDelta|$\varDelta$||
@@ -1338,7 +1364,7 @@ use `\ce` instead|
 |\vartriangleright|$\vartriangleright$||
 |\varUpsilon|$\varUpsilon$||
 |\varXi|$\varXi$||
-|\vb|$\vec{\mathbf{a}}$|`\vb{a}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\vb|$\mathbf{a}$|`\vb{a}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\vcentcolon|$\mathrel{\vcentcolon =}$|`\mathrel{\vcentcolon =}`|
 |\vcenter|$a+\left(\vcenter{\frac{\frac a b}c}\right)$|`a+\left(\vcenter{\hbox{$\frac{\frac a b}c$}}\right)`<br>TeX (strict) syntax|
 |\vcenter|$a+\left(\vcenter{\frac{\frac a b}c}\right)$|`a+\left(\vcenter{\frac{\frac a b}c}\right)`<br>non-strict syntax|
@@ -1348,8 +1374,8 @@ use `\ce` instead|
 |\vdot|$a\boldsymbol\cdot b$|`a\vdot b` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\vdots|$\vdots$||
 |\vec|$\vec{F}$|`\vec{F}`|
-|\vectorarrow|$\mathbf{\hat{a}}$|`\vectorarrow{a}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
-|\vectorbold|$\vec{\mathbf{a}}$|`\vectorbold{a}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\vectorarrow|$\mathbf{\vec{a}}$|`\vectorarrow{a}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\vectorbold|$\mathbf{a}$|`\vectorbold{a}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\vectorunit|$\mathbf{\hat{a}}$|`\vectorunit{a}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\vee|$\vee$||
 |\veebar|$\veebar$||
@@ -1363,8 +1389,9 @@ use `\ce` instead|
 |{Vmatrix*}|$\begin{Vmatrix*}[r]0&-1\\-1&0\end{Vmatrix*}$|`\begin{Vmatrix*}[r]`<br>&nbsp;&nbsp;&nbsp;`0 & -1 \\`<br>&nbsp;&nbsp;&nbsp;`-1 & 0`<br>`\end{Vmatrix*}`|
 |{vmatrix}|$\begin{vmatrix}a&b\\c&d\end{vmatrix}$|`\begin{vmatrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{vmatrix}`|
 |{vmatrix*}|$\begin{vmatrix*}[r]0&-1\\-1&0\end{vmatrix*}$|`\begin{vmatrix*}[r]`<br>&nbsp;&nbsp;&nbsp;`0 & -1 \\`<br>&nbsp;&nbsp;&nbsp;`-1 & 0`<br>`\end{vmatrix*}`|
+|\vmqty|$\begin{vmatrix}a&b\\c&d\end{vmatrix}$|`\vmqty{a & b \\ c & d}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\vphantom|$\overline{\vphantom{M}a}$|`\overline{\vphantom{M}a}`|
-|\vqty|$\vert a\vert$|`\vqty{a}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\vqty|$\|a\|$|`\vqty{a}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\vu|$\mathbf{\hat{a}}$|`\vu{a}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\Vvdash|$\Vvdash$||
 
@@ -1400,6 +1427,8 @@ use `\ce` instead|
 |\xleftrightharpoons|$\xleftrightharpoons{abc}$|`\xleftrightharpoons{abc}`|
 |\xlongequal|$\xlongequal{abc}$|`\xlongequal{abc}`|
 |\xmapsto|$\xmapsto{abc}$|`\xmapsto{abc}`|
+|\xmat|$\begin{matrix}1&1&1\\1&1&1\end{matrix}$|`xmat{1}{2}{3}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
+|\xmatrix|$\begin{matrix}1&1&1\\1&1&1\end{matrix}$|`xmatrix{1}{2}{3}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\xRightarrow|$\xRightarrow{abc}$|`\xRightarrow{abc}`|
 |\xrightarrow|$\xrightarrow{abc}$|`\xrightarrow{abc}`|
 |\xrightharpoondown|$\xrightharpoondown{abc}$|`\xrightharpoondown{abc}`|
@@ -1415,5 +1444,7 @@ use `\ce` instead|
 |:---------------|:------------|:-----------------|
 |\yen|$\yen$||
 |\Z|$\Z$||
+|\zeromatrix|$\begin{matrix}0&0\\0&0\end{matrix}$|`\zeromatrix{2}{2}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
 |\Zeta|$\Zeta$||
 |\zeta|$\zeta$||
+|\zmat|$\begin{matrix}0&0\\0&0\end{matrix}$|`\zmat{2}{2}` Requires [physics](github.com/KaTeX/KaTeX/tree/main/contrib/physics) extension|
