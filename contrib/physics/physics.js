@@ -166,7 +166,7 @@ katex.__defineMacro("\\vectorbold", function(ctx) {
 });
 katex.__defineMacro("\\vb", "\\vectorbold");
 katex.__defineMacro("\\vectorarrow", function(ctx) {
-    return isAlt(ctx) ? "\\vec{\\boldsymbol{#1}}" : "\\vec{\\mathbf{#1}}";
+    return isAlt(ctx) ? "\\boldsymbol{\\vec{#1}}" : "\\mathbf{\\vec{#1}}";
 });
 katex.__defineMacro("\\va", "\\vectorarrow");
 katex.__defineMacro("\\vectorunit", function(ctx) {
@@ -696,14 +696,41 @@ katex.__defineMacro("\\smallmatrixquantity", function(ctx) {
     const alt = isAlt(ctx);
     const start = ctx.popToken().text;
     const end = braces[start];
-    let expr = "";
-    if (start === "{") {
-        expr += getBody(ctx, "{", "}", undefined, false);
-        return `\\tiny\\mqty{${expr}}`;
-    } else {
-        expr += getBody(ctx, start, end, undefined, false);
-        return `\\tiny\\mqty${alt ? "*" : ""}${start}${expr}${end}`;
+    if (typeof end === "undefined") {
+        throw new Error("Expecting opening delimiters after macro");
     }
+    let expr =
+        start === "{"
+            ? ""
+            : alt && start === "("
+              ? "\\left\\lgroup"
+              : "\\left" + start;
+    expr += "\\begin{smallmatrix}";
+    let opened = 0;
+    for (;;) {
+        const next = ctx.popToken().text;
+        if (next === "EOF") {
+            throw new Error(
+                "Expecting closing delimiters " + end + " after macro",
+            );
+        } else if (next !== end) {
+            expr += next;
+            if (next === start) {opened++;}
+        } else if (opened > 0) {
+            expr += next;
+            opened--;
+        } else {
+            expr += "\\end{smallmatrix}";
+            expr +=
+                end === "}"
+                    ? ""
+                    : alt && start === "("
+                      ? "\\right\\rgroup"
+                      : "\\right" + next;
+            break;
+        }
+    }
+    return expr;
 });
 katex.__defineMacro("\\smqty", "\\smallmatrixquantity");
 katex.__defineMacro("\\spmqty", "\\smqty(#1)");
@@ -715,7 +742,10 @@ katex.__defineMacro(
     "\\left|\\begin{matrix}#1\\end{matrix}\\right|",
 );
 katex.__defineMacro("\\mdet", "\\matrixdeterminant");
-katex.__defineMacro("\\smdet", "\\tiny\\mdet{#1}");
+katex.__defineMacro(
+    "\\smdet",
+    "\\vert\\begin{smallmatrix}#1\\end{smallmatrix}\\vert"
+);
 katex.__defineMacro("\\identitymatrix", function(ctx) {
     const n = parseInt(popNextArg(ctx));
     if (isNaN(n)) {
@@ -754,7 +784,7 @@ katex.__defineMacro("\\xmatrix", function(ctx) {
     }
     return (
         "\\begin{matrix}" +
-        mat.map((row) => row.join(",")).join("\\\\") +
+        mat.map((row) => row.join("&")).join("\\\\") +
         "\\end{matrix}"
     );
 });
